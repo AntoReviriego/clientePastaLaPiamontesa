@@ -1,0 +1,45 @@
+.logo {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 0.5rem;
+}
+
+::ng-deep p-button button.p-ripple.p-button{
+  background: var(--p-primary-600)
+}
+
+.brand-name {
+  color: #c8963e;
+  margin: 0;
+  font-size: 2rem;
+}
+
+.login-button{
+  background-color: #c8963e;
+  color: #6c757d
+}
+
+.field {
+  margin-bottom: 1.5rem;
+}
+
+::ng-deep .p-float-label {
+  margin-top: 1rem;
+}
+
+.footer-text {
+  text-align: center;
+  color: #6c757d;
+  font-size: 0.85rem;
+  
+  p {
+    margin: 0.25rem 0;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) { 
+  .brand-name {
+    font-size: 1.5rem;
+  }
+}
