@@ -6,9 +6,7 @@ import { ImportsModules } from '../../configs/import-modules';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ImportsModules
-
-  ],
+  imports: [ImportsModules],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css', 
 })
@@ -25,6 +23,7 @@ export class LoginComponent {
     this.loginForm = this.fb.group({
       username: ["", [Validators.required]],
       password: ["", [Validators.required, Validators.minLength(6)]],
+      recordarme: null
     })
   }
 

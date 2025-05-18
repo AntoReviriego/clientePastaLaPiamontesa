@@ -19,10 +19,6 @@
   color: #6c757d
 }
 
-.field {
-  margin-bottom: 1.5rem;
-}
-
 ::ng-deep .p-float-label {
   margin-top: 1rem;
 }
