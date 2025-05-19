@@ -25,7 +25,7 @@
                         <p-inputgroup-addon >
                             <i class="pi pi-lock"></i>
                         </p-inputgroup-addon>
-                        <input pInputText type="password" placeholder="Ingresar su contraseña" id="username" aria-describedby="username-help" formControlName="username"/>
+                        <input pInputText type="password" placeholder="Ingresar su contraseña" id="username" aria-describedby="username-help" formControlName="password"/>
                     </p-inputgroup>
                     <small id="password-help" *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="p-error">La contraseña debe tener al menos 6 caracteres.</small>
                 </div>

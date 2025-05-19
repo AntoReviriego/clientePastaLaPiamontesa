@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { ImportsModules } from '../../configs/import-modules';
+import { LoginService } from '../../services/login.service';
+import { Login } from '../../Models/login.model';
+import { Session } from '../../Models/sesion.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,14 +13,16 @@ import { ImportsModules } from '../../configs/import-modules';
   imports: [ImportsModules],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css', 
+  providers: [LoginService]
 })
 export class LoginComponent {
- loginForm!: FormGroup
-  loading = false
+  loginForm!: FormGroup
 
   constructor(
     private fb: FormBuilder,
     private messageService: MessageService,
+    private loginService:LoginService, 
+    private router:Router
   ) {}
 
   ngOnInit(): void {
@@ -36,19 +42,19 @@ export class LoginComponent {
       })
       return
     }
-
-    this.loading = true
-
-    // Simulación de autenticación
-    setTimeout(() => {
-      // Aquí iría la lógica real de autenticación
-      console.log("Datos de login:", this.loginForm.value)
+    let newLogin = new Login(); 
+    newLogin.Usuario = this.loginForm.value.username; 
+    newLogin.Password = this.loginForm.value.password;
+    this.loginService.Login(newLogin).subscribe(x => {
       this.messageService.add({
         severity: "success",
         summary: "Éxito",
-        detail: "¡Bienvenido a Pasta Deliciosa!",
+        detail: "¡Bienvenido a Pastas La Piamontesa!",
       })
-      this.loading = false
-    }, 1500)
+
+      var sesion = new Session(x);
+      sessionStorage.setItem("sesion", JSON.stringify(sesion));
+      this.router.navigate([`/home/Dashboard`])
+    })
   }
 }

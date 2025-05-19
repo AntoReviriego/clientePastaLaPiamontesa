@@ -4,12 +4,14 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { routes } from './app.routes';
 import { MyPreset } from './configs/themes-config';
 import { providePrimeNG } from 'primeng/config';
+import { provideHttpClient } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true })
     , provideRouter(routes)
     , provideAnimationsAsync()
+    , provideHttpClient()
     , providePrimeNG({ 
       theme: {
         preset: MyPreset,
